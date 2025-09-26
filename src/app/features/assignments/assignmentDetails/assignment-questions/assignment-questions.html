@@ -1,0 +1,61 @@
+<div class="assignment-questions-container container my-4" *ngIf="!showScoreCard">
+  <div *ngIf="takeAssignments.length">
+
+    <div class="timer alert alert-info text-center fw-semibold" *ngIf="timeLeft > 0">
+      Time Left: {{ formatTime(timeLeft) }}
+    </div>
+    
+
+    <h2 class="text-center mb-4">{{ takeAssignments[currentAssignmentIndex].title }}</h2>
+
+
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+        <div class="question-card card shadow p-3 mb-4" *ngIf="currentQuestion">
+          <div class="card-body">
+            <p class="fw-bold">
+              {{ currentQuestionIndex + 1 }}. {{ currentQuestion.question }}
+            </p>
+
+
+            <div
+              *ngFor="let option of currentQuestion?.options"
+              class="form-check mb-2"
+              (click)="onAnswerChange(currentAssignment?.id??' ', currentQuestionIndex, option)"
+            >
+              <input
+                class="form-check-input"
+                type="radio"
+                [name]="'q-' + (currentAssignment?.id ?? '') + '-' + currentQuestionIndex"
+                [value]="option"
+                [checked]="userAnswers()[(currentAssignment?.id ?? '') + '-' + currentQuestionIndex] === option"
+              />
+              <label class="form-check-label">
+                {{ option }}
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="navigation-buttons d-flex justify-content-between mt-3">
+      <button class="btn btn-secondary" (click)="prevQuestion()" [disabled]="currentQuestionIndex === 0">
+        Previous
+      </button>
+      
+      <div>
+        <button 
+          *ngIf="!isLastQuestion" 
+          class="btn btn-primary me-2" 
+          (click)="nextQuestion()" 
+          [disabled]="isLastQuestion"
+        >
+          Next
+        </button>
+        <button class="btn btn-success" (click)="onSubmit()">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>

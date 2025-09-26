@@ -1,0 +1,12 @@
+
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15); 
+}
+
+
+.card:hover {
+  transform: translateY(-3px) scale(1.02); 
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.35); 
+}

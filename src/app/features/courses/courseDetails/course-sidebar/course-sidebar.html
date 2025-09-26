@@ -1,0 +1,9 @@
+<div class="sidebar">
+  <h2 class="sidebar-title">{{ courseTitle || 'Chapters' }}</h2>
+  <ul class="chapter-list">
+    <li *ngFor="let chapter of chapters" class="chapter-item" [class.active]="chapter.isActive"
+      (click)="onChapterSelect(chapter)" role="button" tabindex="0">
+      {{ chapter.title }}
+    </li>
+  </ul>
+</div>

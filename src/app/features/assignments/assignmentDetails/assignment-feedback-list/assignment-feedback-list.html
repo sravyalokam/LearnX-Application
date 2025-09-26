@@ -1,0 +1,22 @@
+
+<section class="feedback-section">
+  <h2 class="feedback-title fw-bold fs-1 mb-4" style="background: linear-gradient(90deg, #4B4FFF, #FF4DB7); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">What Our Learners Say</h2>
+
+  <div *ngIf="loading">Loading feedback...</div>
+
+  <div class="feedback-grid" *ngIf="!loading && feedbacks.length > 0">
+    <div class="feedback-card" *ngFor="let fb of feedbacks">
+      <div class="feedback-header">
+        <strong>{{ fb.user.name }}</strong>
+        <span class="feedback-rating"><i class="bi bi-star-fill" style="color: rgb(67, 67, 212);"></i> {{ fb.feedback.rating }}/5</span>
+      </div>
+      <p class="feedback-comment">
+        "{{ fb.feedback.comment }}"
+      </p>
+    </div>
+  </div>
+
+  <div *ngIf="!loading && feedbacks.length === 0">
+    <p>No feedback submitted yet.</p>
+  </div>
+</section>

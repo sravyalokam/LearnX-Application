@@ -1,0 +1,156 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<footer id="contact" class="footer text-light pt-5 pb-3">
+  <div class="container">
+    <div class="row gy-5 footer-content">
+      
+
+      <div class="col-lg-4 col-md-6">
+        <h3 class="fw-bold mb-3">EduPlatform</h3>
+        <p class="small text-light opacity-75 mb-4">
+          Empowering learners worldwide with high-quality, accessible online education. 
+          Transform your career with our expert-led courses and supportive community.
+        </p>
+        
+
+        <div class="d-flex gap-3 mb-4">
+          <a href="#" class="social-link">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="social-link">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="social-link">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="#" class="social-link">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+
+
+        <div class="contact-info small">
+          <p>
+            <i class="fas fa-phone-alt text-primary me-2"></i>
+            <a href="tel:{{ contactDetails.phone }}" class="text-light text-decoration-none">
+              {{ contactDetails.phone }}
+            </a>
+          </p>
+          <p>
+            <i class="fas fa-envelope text-primary me-2"></i>
+            <a href="mailto:{{ contactDetails.email }}" class="text-light text-decoration-none">
+              {{ contactDetails.email }}
+            </a>
+          </p>
+          <p>
+            <i class="fas fa-location-dot text-primary me-2"></i>
+            <a href="mailto:{{ contactDetails.address }}" class="text-light text-decoration-none">
+              {{ contactDetails.address }}
+            </a>
+          </p>
+        </div>
+      </div>
+
+
+      <div class="col-lg-8 col-md-6">
+        <div class="row">
+          <div class="col-6 col-md-3 mb-3">
+            <h6 class="fw-bold border-start border-3 ps-2 border-primary">Courses</h6>
+            <ul class="list-unstyled mt-2 small">
+              <li><a [routerLink]="['/Courses']" class="footer-link">Web Development</a></li>
+              <li><a [routerLink]="['/Courses']" class="footer-link">Data Analytics</a></li>
+              <li><a [routerLink]="['/Courses']" class="footer-link">C# with ASP.NET</a></li>
+              <li><a [routerLink]="['/Courses']" class="footer-link">Data Structures & Alogorithms with C++</a></li>
+              <li><a [routerLink]="['/Courses']" class="footer-link">Java Full Stack</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-md-3 mb-3">
+            <h6 class="fw-bold border-start border-3 ps-2 border-primary">Company</h6>
+            <ul class="list-unstyled mt-2 small">
+              <li><a  [routerLink]="['/About us']" class="footer-link">About Us</a></li>
+              <li><a href="#careers" class="footer-link">Careers</a></li>
+              <li><a href="#blog" class="footer-link">Blog</a></li>
+              <li><a href="#press" class="footer-link">Press</a></li>
+              <li><a href="#partnerships" class="footer-link">Partnerships</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-md-3 mb-3">
+            <h6 class="fw-bold border-start border-3 ps-2 border-primary">Support</h6>
+            <ul class="list-unstyled mt-2 small">
+              <li><a href="#help" class="footer-link">Help Center</a></li>
+              <li><a href="#contact" class="footer-link">Contact Us</a></li>
+              <li><a href="#community" class="footer-link">Community</a></li>
+              <li><a href="#status" class="footer-link">System Status</a></li>
+              <li><a href="#feedback" class="footer-link">Feedback</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-md-3 mb-3">
+            <h6 class="fw-bold border-start border-3 ps-2 border-primary">Legal</h6>
+            <ul class="list-unstyled mt-2 small">
+              <li><a href="#privacy" class="footer-link">Privacy Policy</a></li>
+              <li><a href="#terms" class="footer-link">Terms of Service</a></li>
+              <li><a href="#cookies" class="footer-link">Cookie Policy</a></li>
+              <li><a href="#gdpr" class="footer-link">GDPR</a></li>
+              <li><a href="#accessibility" class="footer-link">Accessibility</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center pt-4 mt-4 border-top border-secondary">
+      <p class="small mb-2 mb-md-0 text-light opacity-75">
+        © 2025 EduPlatform. All rights reserved. Empowering learners worldwide.
+      </p>
+      <div class="d-flex gap-3">
+        <a href="#privacy" class="footer-link small">Privacy</a>
+        <a href="#terms" class="footer-link small">Terms</a>
+        <a href="#cookies" class="footer-link small">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: linear-gradient(135deg, #0d1b2a, #1b263b);
+  }
+
+  .social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    background-color: #212529;
+    color: #bbb;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    text-decoration: none;
+  }
+  .social-link:hover {
+    background-color: #007bff;
+    color: #fff !important;
+    transform: translateY(-3px) scale(1.05);
+  }
+
+  .footer-link {
+    color: #bbb;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 6px;
+    transition: color 0.3s ease, transform 0.2s ease;
+  }
+  .footer-link:hover {
+    color: #fff;
+    transform: translateX(3px);
+  }
+
+  .contact-info a:hover {
+    color: #007bff !important;
+  }
+</style>

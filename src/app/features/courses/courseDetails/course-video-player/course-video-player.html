@@ -1,0 +1,17 @@
+<div class="video-player">
+  <div class="video-title">
+    <h2>{{ currentChapter.title }}</h2>
+  </div>
+
+
+  <iframe 
+    *ngIf="currentChapter?.videoUrl"
+    [src]="currentChapter.videoUrl | safeUrl"
+    width="100%" 
+    height="580" 
+    frameborder="0"
+    allowfullscreen>
+  </iframe>
+
+
+</div>

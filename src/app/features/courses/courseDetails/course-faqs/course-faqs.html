@@ -1,0 +1,14 @@
+<div class="faqs-section" *ngIf="faqs?.length">
+  <h3 class="faqs-title">FAQs</h3>
+
+  <div *ngFor="let faq of faqs" class="faq-item">
+    <div class="faq-question" (click)="toggleFaq(faq)">
+      <span>{{ faq.question }}</span>
+      <span class="faq-toggle">{{ faq.isExpanded ? '-' : '+' }}</span>
+    </div>
+
+    <div class="faq-answer" *ngIf="faq.isExpanded">
+      <p>{{ faq.answer }}</p>
+    </div>
+  </div>
+</div>

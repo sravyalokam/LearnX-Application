@@ -1,0 +1,66 @@
+.offer-banner {
+  width: 100%;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  position: sticky;
+  font-size: 1rem;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-top: 100px;
+}
+
+.offer-text {
+  line-height: 1.6;       
+  font-size: 1rem;
+  color: #fff;
+  text-align: center;
+}
+
+.offer-text strong {
+  margin-right: 8px;    
+}
+
+.coupon {
+  /* background: #fff; */
+  color: white;
+  font-weight: bold;
+  /* padding: 4px 10px; */
+  border-radius: 6px;
+  margin: 0 6px;          
+  font-size: 17px;
+}
+
+.offer-text em {
+  display: block;          
+  margin-top: 8px;
+  font-style: normal;
+  opacity: 0.9;
+}
+
+
+.banner-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.banner-content p {
+  margin: 0;
+}
+
+.close-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.close-btn:hover {
+  color: #ffdddd;
+}

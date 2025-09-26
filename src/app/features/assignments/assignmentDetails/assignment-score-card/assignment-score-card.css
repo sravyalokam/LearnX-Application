@@ -1,0 +1,87 @@
+.score-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  max-width: 450px;
+  margin: 20px auto;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.score-card h2 {
+  margin-bottom: 16px;
+  font-size: 24px;
+  color: #2c3e50;
+}
+
+.score-card p {
+  margin: 8px 0;
+  font-size: 16px;
+  color: #555;
+}
+
+.feedback {
+  margin-top: 16px;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.feedback.excellent {
+  background: #e6ffed;
+  color: #1b5e20;
+}
+
+.feedback.good {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.feedback.poor {
+  background: #fdecea;
+  color: #c0392b;
+}
+
+.actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.actions button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.actions .retry {
+  background: #3498db;
+  color: #fff;
+}
+
+.actions .retry:hover {
+  background: #2980b9;
+}
+
+.actions .review {
+  background: #f1c40f;
+  color: #fff;
+}
+
+.actions .review:hover {
+  background: #d4ac0d;
+}
+
+.actions .next {
+  background: #27ae60;
+  color: #fff;
+}
+
+.actions .next:hover {
+  background: #1e8449;
+}

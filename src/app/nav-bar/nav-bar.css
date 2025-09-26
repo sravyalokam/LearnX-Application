@@ -1,0 +1,143 @@
+.navbar-wrapper {
+  width: 100%;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  z-index: 9999;
+  background: transparent;
+}
+
+.brand .logo img {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.2s ease;
+  border-radius: 6px;
+}
+
+.brand .logo img:hover {
+  transform: scale(1.05);
+}
+
+.navbar {
+  width: min(1200px, 100%);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: #ffffff;
+  padding: 12px 22px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08),
+    0 1px 3px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+
+
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  gap: 50px;
+}
+
+.nav-links li {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links a {
+  color: #4b5563;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  position: relative;
+  padding: 6px 0;
+  transition: color .18s ease;
+}
+
+.nav-links a:hover {
+  color: #111827;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, #5b21b6, #ec4899);
+  transition: width .22s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active-link::after {
+  width: 100%;
+}
+
+
+.btn {
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border-radius: 999px;
+  padding: 9px 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.primary-btn:hover {
+  opacity: 0.95;
+  transform: translateY(-1px);
+}
+
+
+
+@media (max-width: 420px) {
+  .primary-btn {
+    display: none;
+  }
+}
+
+.navbar-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile-btn, .logout-btn {
+  background: linear-gradient(90deg, #5b21b6, #ec4899);
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+}
+
+.profile-btn {
+  background-color: #f0f0f0;
+  color: white;
+}
+
+.profile-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.logout-btn {
+  background-color: #ff4d4f;
+  color: #fff;
+}
+
+.logout-btn:hover {
+  background-color: #e04444;
+}

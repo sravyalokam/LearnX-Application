@@ -1,0 +1,10 @@
+<div class="score-card">
+  <h2>  Score Card</h2>
+
+  <p><strong>Your Score:</strong> {{ score }}/{{ totalQuestions }}</p>
+  <p><strong>Percentage:</strong> {{ percentage | number:'1.0-2' }}%</p>
+
+
+<app-assignment-feedback-form
+  (feedbackSubmitted)="handleFeedback($event)">
+</app-assignment-feedback-form>

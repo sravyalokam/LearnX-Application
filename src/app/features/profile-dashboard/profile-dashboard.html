@@ -1,0 +1,107 @@
+<div class="container my-5" *ngIf="user">
+  <div class="row g-4">
+
+   
+    <aside class="col-12 col-md-4">
+      <div class="card shadow-sm p-4 bg-light sticky-top" style="top: 20px; border-radius: 1rem;">
+        
+        
+        <div class="text-center mb-4">
+          <img [src]="user.avatarUrl" alt="Profile Avatar"
+               class="img-fluid rounded-circle border border-2 border-primary"
+               style="width:120px; height:120px; object-fit:cover;">
+        </div>
+
+     
+        <div class="text-center mb-4">
+          <h4 class="fw-bold mb-1">{{ user.name }}</h4>
+          <p class="text-muted mb-1">{{ user.email }}</p>
+          <span class="badge bg-primary">{{ user.role || 'Student' }}</span>
+        </div>
+
+       
+        <div class="d-flex justify-content-around mb-4 text-center">
+          <div>
+            <h5 class="mb-0">{{ enrolledCourses.length || 0 }}</h5>
+            <small class="text-muted">Courses</small>
+          </div>
+          <div>
+            <h5 class="mb-0">{{ user.completedAssignments?.length || 0 }}</h5>
+            <small class="text-muted">Assignments</small>
+          </div>
+        </div>
+
+      
+        <div class="d-grid gap-2 mb-3">
+          <button class="btn btn-primary" (click)="changePassModel()">Change Password</button>
+          
+        </div>
+
+      </div>
+    </aside>
+
+    
+    <main class="col-12 col-md-8">
+
+      
+      <section class="mb-4">
+        <app-courses 
+        [courses]="enrolledCourses" 
+        [fetchCourses]="false"
+        title="Enrolled Courses"></app-courses>
+        <p *ngIf="enrolledCourses?.length === 0" class="text-muted mt-2">You are not enrolled in any courses yet.</p>
+      </section>
+
+     
+      <section>
+        <ng-container *ngIf="user.completedAssignments?.length; else noAssignments">
+          <ul class="list-group mb-4">
+            <app-assignments 
+              [assignmentsInput]="completedAssignmentsList" 
+              [fetchAssignments]="false"
+              title="Completed Assignments"
+              [filter]="false">
+            </app-assignments>
+          </ul>
+        </ng-container>
+
+        <ng-template #noAssignments>
+          <p class="text-muted">You haven’t completed any assignments yet.</p>
+        </ng-template>
+      </section>
+
+    </main>
+
+  </div>
+</div>
+
+<div class="modal fade show" *ngIf="showModal" tabindex="-1" style="display:block;" aria-modal="true" role="dialog">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Change Password</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="passwordForm" (ngSubmit)="onPasswordSubmit()">
+          <div class="mb-3">
+            <label for="currentPassword" class="form-label">Current Password</label>
+            <input type="password" id="currentPassword" formControlName="currentPassword" class="form-control" placeholder="Enter current password">
+          </div>
+
+          <div class="mb-3">
+            <label for="newPassword" class="form-label">New Password</label>
+            <input type="password" id="newPassword" formControlName="newPassword" class="form-control" placeholder="Enter new password">
+          </div>
+
+          <div class="mb-3">
+            <label for="confirmPassword" class="form-label">Confirm Password</label>
+            <input type="password" id="confirmPassword" formControlName="confirmPassword" class="form-control" placeholder="Confirm new password">
+          </div>
+
+          <button type="submit" class="btn btn-success w-100" [disabled]="passwordForm.invalid">Update Password</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

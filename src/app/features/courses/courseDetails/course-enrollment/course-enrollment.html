@@ -1,0 +1,67 @@
+<div *ngIf="course" class="d-flex flex-column flex-md-row gap-4 p-4 mx-auto bg-light rounded-4 shadow" style="max-width:1000px; font-family:Inter,sans-serif;">
+
+  
+  <div class="flex-grow-1 p-4 bg-white rounded-4 shadow-sm">
+    <h2 class="fs-4 fw-bold text-dark mb-2">Subscribe to {{ course.title }}</h2>
+    <p class="text-secondary mb-3">
+      Unlock unlimited access to {{ course.title }} and other top courses with LearnX.
+    </p>
+
+    <ul class="list-unstyled mb-4">
+      <li class="d-flex align-items-center gap-2 text-dark small mb-2"><i class="bi bi-book"></i> Access to sample courses and tutorials</li>
+      <li class="d-flex align-items-center gap-2 text-dark small mb-2"><i class="bi bi-pencil-square"></i> Practice assignments included</li>
+      <li class="d-flex align-items-center gap-2 text-dark small"><i class="bi bi-mortarboard-fill"></i> Basic to advanced learning materials</li>
+    </ul>
+
+    <div>
+      <h3 class="fs-5 fw-bold mb-3">Payment Method</h3>
+
+      <div class="form-check d-flex align-items-center gap-2 p-2 border rounded-3 bg-light mb-2">
+        <input class="form-check-input" type="radio" name="payment" value="card" [(ngModel)]="paymentMethod" checked>
+        <label class="form-check-label"><i class="bi bi-credit-card"></i> Card</label>
+      </div>
+
+      <div class="form-check d-flex align-items-center gap-2 p-2 border rounded-3 bg-light">
+        <input class="form-check-input" type="radio" name="payment" value="upi" [(ngModel)]="paymentMethod">
+        <label class="form-check-label"><i class="bi bi-wallet"></i> UPI</label>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="flex-shrink-0 p-4 rounded-4 text-white shadow" 
+       style="background: linear-gradient(135deg, #667eea, #764ba2); min-width:300px; height:fit-content;">
+    <h3 class="fs-5 fw-bold mb-4">Summary</h3>
+
+    <div class="d-flex justify-content-between small mb-2">
+      <span>Full-time access</span>
+      <span>{{ breakdown.total | number | currency:'USD':'symbol':'1.0-2' }}</span>
+    </div>
+
+    <div class="d-flex justify-content-between fw-bold fs-6 mb-3">
+      <span>Total</span>
+      <span>{{ breakdown.total | number | currency:'USD':'symbol':'1.0-2' }}</span>
+    </div>
+
+    <div class="d-flex flex-column flex-sm-row gap-2 mb-3">
+      <input type="text" class="form-control rounded-3" placeholder="Enter Coupon" [(ngModel)]="couponCode">
+      <button type="button" class="btn btn-primary fw-semibold px-3" style="background:#a78bfa; border:none;" (click)="applyCoupon()">Apply</button>
+    </div>
+
+    <div class="text-success small fw-semibold mb-2" *ngIf="couponMsg"><b>{{ couponMsg }}</b></div>
+
+    <button class="btn w-100 fw-semibold py-2 rounded-3 shadow-sm" 
+            style="background:#a78bfa; border:none;" 
+            (click)="onSubmit()" [disabled]="enrolling">
+      <i class="bi bi-lock-fill"></i> Start subscription
+    </button>
+  </div>
+</div>
+
+
+<div class="position-fixed bottom-0 end-0 m-3 d-flex align-items-center justify-content-between text-white rounded-3 shadow px-3 py-2 fw-semibold"
+     *ngIf="showSuccess"
+     style="background:#4caf50; max-width:350px; z-index:9999;">
+   You have successfully enrolled in {{ course.title }}!
+  <button class="btn btn-sm text-white border-0 ms-2" (click)="showSuccess=false">✕</button>
+</div>

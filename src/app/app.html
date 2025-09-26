@@ -1,0 +1,16 @@
+
+<app-nav-bar *ngIf="showNavbar()"></app-nav-bar>
+
+<app-offer-banner 
+   *ngIf="showNavbar() && isBannerOpen"
+  (close)="toggleBanner(false)">
+</app-offer-banner>
+
+<div 
+  class="main-content" >
+  
+  <router-outlet></router-outlet>
+</div>
+
+
+<app-contact-us *ngIf="showNavbar()" ></app-contact-us> 

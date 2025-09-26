@@ -1,0 +1,94 @@
+<div class="container-fluid vh-100 d-flex flex-lg-row flex-column p-0">
+  
+  <div class="col-lg-6 d-flex align-items-center justify-content-center left-section h-100">
+  <img src="assets/images/learnX_banner.png" alt="LearnX illustration"
+       class="img-fluid" style="max-width: 600px;">
+</div>
+
+  
+  <div class="col-lg-6 d-flex align-items-center justify-content-center bg-light">
+    <div class="card shadow-lg p-4 p-md-5 rounded-4" style="max-width: 420px; width: 100%;">
+      <div class="text-center mb-3">
+        <h2 class="fw-bold text-dark fs-4">Create your LearnX Account</h2>
+        <p class="text-muted small">Join us and start your learning journey</p>
+      </div>
+
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+
+        
+        <div class="mb-3 text-start">
+          <label class="form-label">Full Name <span style="color: red;">*</span></label>
+          <input type="text" formControlName="name" placeholder="Enter your full name"
+                 class="form-control rounded-3"
+                 [ngClass]="{'is-invalid': submitted && name?.invalid}">
+          <div class="text-danger small mt-1" *ngIf="submitted && name?.errors">
+            <small *ngIf="name?.errors?.['required']">Full name is required. <br></small>
+            <small *ngIf="name?.errors?.['minlength']">Full name must be at least 3 characters.<br></small>
+            <small *ngIf="name?.errors?.['pattern']">Full name must contain only letters.</small>
+
+          </div>
+        </div>
+
+      
+        <div class="mb-3 text-start">
+          <label class="form-label">Email <span style="color: red;">*</span></label>
+          <input type="email" formControlName="email" placeholder="Enter your email"
+                 class="form-control rounded-3"
+                 [ngClass]="{'is-invalid': submitted && email?.invalid}">
+          <div class="text-danger small mt-1" *ngIf="submitted && email?.errors">
+            <small *ngIf="email?.errors?.['required']">Email is required.<br></small>
+            <small *ngIf="email?.errors?.['email']">Please enter a valid email.<br></small>
+          </div>
+        </div>
+
+        
+        <div class="mb-3 text-start">
+          <label class="form-label">Password <span style="color: red;">*</span></label>
+          <input type="password" formControlName="password" placeholder="Create a password"
+                 class="form-control rounded-3"
+                 [ngClass]="{'is-invalid': submitted && password?.invalid}">
+          <div class="text-danger small mt-1" *ngIf="submitted && password?.errors">
+            <small *ngIf="password?.errors?.['required']">Password is required. <br></small>
+            <small *ngIf="password?.errors?.['minlength']">
+              Password must be at least {{ password?.errors?.['minlength']?.requiredLength }} characters. <br>
+            </small>
+            <small *ngIf="password?.errors?.['pattern']">
+              Password must include uppercase, lowercase, number, and special character. <br>
+            </small>
+          </div>
+        </div>
+
+        
+        <div class="mb-3 text-start">
+          <label class="form-label">Confirm Password <span style="color: red;">*</span></label>
+          <input type="password" formControlName="confirmPassword" placeholder="Confirm your password"
+                 class="form-control rounded-3"
+                 [ngClass]="{'is-invalid': submitted && confirmPassword?.invalid || (submitted && form.errors?.['mismatch'])}">
+          <div class="text-danger small mt-1" *ngIf="submitted && (confirmPassword?.errors || form.errors?.['mismatch'])">
+            <small *ngIf="confirmPassword?.errors?.['required']">Confirm password is required. <br></small>
+            <small *ngIf="form.errors?.['mismatch']">Passwords do not match. <br></small>
+          </div>
+        </div>
+
+      
+        <div class="text-danger small mb-3 text-center" *ngIf="error">
+          <small>{{ error }}</small>
+        </div>
+
+      
+        <button type="submit" class="btn w-100 fw-semibold text-white py-2"
+                style="background: linear-gradient(135deg, #667eea, #764ba2); border: none;">
+          Sign Up
+        </button>
+      </form>
+
+      
+      <div class="text-center mt-3 small">
+        <a routerLink="/signin" class="text-primary text-decoration-none">
+          Already have an account? Login
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

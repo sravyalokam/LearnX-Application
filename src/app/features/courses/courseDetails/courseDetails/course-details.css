@@ -1,0 +1,98 @@
+.course-layout {
+  display: flex;
+  min-height: 100vh;
+  background: #f5f7fb;
+  font-family: "Inter", Arial, sans-serif;
+}
+
+
+app-course-sidebar {
+  flex: 0 0 260px;
+  border-right: 1px solid #e0e6ed;
+  background: #ffffff;
+  padding: 1.5rem 1rem;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.04);
+}
+
+
+.main-content {
+  flex: 1;
+  padding: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background: linear-gradient(135deg, #f9fafc, #eef2f7);
+}
+
+
+.content-card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 1200px;
+  padding: 2rem 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease;
+}
+
+.content-card:hover {
+  transform: translateY(-3px);
+}
+
+
+app-course-video-player {
+  display: block;
+  width: 100%;
+  margin-bottom: 2rem;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+
+app-course-faqs {
+  display: block;
+  margin-bottom: 2rem;
+}
+
+.faqs-title {
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #2b2f42;
+  border-left: 4px solid #6c63ff;
+  padding-left: 0.75rem;
+}
+
+
+.assignment-section {
+  border-top: 1px solid #e4e6eb;
+  padding-top: 1.5rem;
+}
+
+.assignment-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #2b2f42;
+}
+
+
+.assignment-btn {
+  display: inline-block;
+  background: #6c63ff;
+  color: #fff;
+  border: none;
+  padding: 0.85rem 1.75rem;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(108, 99, 255, 0.3);
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.assignment-btn:hover {
+  background: #574bff;
+  transform: translateY(-2px);
+}

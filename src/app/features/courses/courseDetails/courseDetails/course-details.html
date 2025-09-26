@@ -1,0 +1,31 @@
+<div *ngIf="!loading && course" class="course-layout">
+
+  <app-course-sidebar [chapters]="course.courseDetails.chapters" (chapterSelected)="onChapterSelected($event)">
+  </app-course-sidebar>
+
+
+  <div class="main-content">
+    <div class="content-card">
+
+      <app-course-video-player *ngIf="course?.courseDetails?.currentChapter"
+        [currentChapter]="course.courseDetails.currentChapter">
+      </app-course-video-player>
+
+
+      <!-- <app-course-faqs *ngIf="course?.courseDetails?.faqs" [faqs]="course.courseDetails.faqs">
+      </app-course-faqs> -->
+
+
+      <!-- <div class="assignment-section">
+        <h3 class="assignment-title">Related Assignment</h3>
+        <button class="assignment-btn" (click)="goToAssignment()">Take Assignment</button>
+      </div> -->
+
+
+    </div>
+  </div>
+</div>
+
+<div *ngIf="loading" class="loading">
+  Loading course details...
+</div>

@@ -1,0 +1,44 @@
+
+
+
+button.beginner {
+  background-color:  #037ef8;  
+  color: white;
+}
+button.beginner:hover {
+  background-color: #6fb3f3;  
+  color: white;
+}
+
+
+button.intermediate {
+  background-color: #0255b3;  
+  color: #ffffff;
+}
+button.intermediate:hover {
+  background-color: #357ab8;  
+  color: #ffffff;
+}
+
+
+button.advanced {
+  background-color: #2f5275;  
+  color: #ffffff;
+}
+button.advanced:hover {
+  background-color: #043a70;  
+  color: #ffffff;
+}
+
+button.all {
+  background-color:  #4439e0;
+  color: white;
+}
+
+button.all:hover {
+  background-color: #4439e0;
+  color: white;
+}
+
+
+

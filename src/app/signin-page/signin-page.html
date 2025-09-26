@@ -1,0 +1,65 @@
+<div class="container-fluid vh-100 d-flex flex-lg-row flex-column p-0">
+  
+  <div class="col-lg-6 d-flex align-items-center justify-content-center left-section h-100">
+  <img src="assets/images/learnX_banner.png" alt="LearnX illustration"
+       class="img-fluid" style="max-width: 600px;">
+</div>
+
+
+  <div class="col-lg-6 d-flex align-items-center justify-content-center bg-light">
+    <div class="card shadow-lg p-4 p-md-5 rounded-4" style="max-width: 420px; width: 100%;">
+      <div class="text-center mb-3">
+        <h2 class="fw-bold text-dark">Welcome to LearnX</h2>
+        <p class="text-muted small">Sign in to continue your learning journey</p>
+      </div>
+
+      <form [formGroup]="form" (ngSubmit)="onSubmit()"> 
+
+  
+        <div class="mb-3 text-start">
+          <label class="form-label">Email <span style="color: red;">*</span></label>
+          <input type="email" formControlName="email" placeholder="Enter your email"
+                 class="form-control rounded-3"
+                 [ngClass]="{'is-invalid': submitted && f.email.invalid}">
+          <div class="text-danger small mt-1" *ngIf="submitted && f.email.invalid">
+            <small *ngIf="f.email.errors?.['required']">Email is required.</small>
+            <small *ngIf="f.email.errors?.['email']">Please enter a valid email.</small>
+          </div>
+        </div>
+
+        
+        <div class="mb-3 text-start">
+          <label class="form-label">Password <span style="color: red;">*</span></label>
+          <input type="password" formControlName="password" placeholder="Enter your password"
+                 class="form-control rounded-3"
+                 [ngClass]="{'is-invalid': submitted && f.password.invalid}">
+          <div class="text-danger small mt-1" *ngIf="submitted && f.password.invalid">
+            <small *ngIf="f.password.errors?.['required']">Password is required.</small>
+            <small *ngIf="f.password.errors?.['minlength']">
+              Password must be at least {{ f.password.errors?.['minlength'].requiredLength }} characters.
+            </small>
+          </div>
+        </div>
+
+
+
+        
+        <div class="text-danger small mb-3 text-center" *ngIf="error">
+          <small>{{ error }}</small>
+        </div>
+
+       
+        <button type="submit" class="btn btn-primary w-100 rounded-3 fw-semibold py-2" 
+        style="background: linear-gradient(135deg, #667eea, #764ba2); border: none;">
+          Login
+        </button>
+      </form>
+
+     
+      <div class="mt-4 d-flex flex-column gap-2 small text-center">
+        <a routerLink="/signup" class="text-primary text-decoration-none">Don’t have an account? Sign Up</a>
+        <a routerLink="/forgetpassword" class="text-primary text-decoration-none">Forgot password?</a>
+      </div>
+    </div>
+  </div>
+</div>

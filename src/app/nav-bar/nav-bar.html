@@ -1,0 +1,29 @@
+<div class="navbar-wrapper">
+  <nav class="navbar">
+    
+    <div class="brand">
+      <a routerLink="/Home" class="logo"><img src="assets/images/logo.png" alt="logo"></a>
+    </div>
+
+   
+    <ul class="nav-links">
+      <li *ngFor="let item of nav_items">
+        <a 
+          [routerLink]="['/', item.label]" 
+          routerLinkActive="active-link" 
+          [routerLinkActiveOptions]="{ exact: true }"
+          
+          >
+          {{ item.label }}
+        </a>
+      </li>
+    </ul>
+
+   
+    <div class="navbar-buttons">
+
+      <button class="btn profile-btn" routerLink="/profile">Profile</button>
+      <button class="btn logout-btn" (click)="onLogout()">Logout</button>
+    </div>
+  </nav>
+</div>

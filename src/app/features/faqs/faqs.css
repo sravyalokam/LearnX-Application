@@ -1,0 +1,26 @@
+.faqs-section {
+  margin-top: 1.5rem;
+}
+
+.faqs-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.faq-item {
+  border-bottom: 1px solid #e5e5e5;
+  padding: 0.75rem 0;
+}
+
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.faq-answer {
+  margin-top: 0.5rem;
+  color: #444;
+}

@@ -1,0 +1,41 @@
+.sidebar {
+  width: 280px;
+  background: #f8f9fa;
+  height: 100vh;
+  padding: 2rem 0;
+  border-right: 1px solid #e9ecef;
+}
+
+.sidebar-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #343a40;
+  margin: 0 0 1.5rem 2rem;
+}
+
+.chapter-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.chapter-item {
+  padding: 1rem 2rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-left: 4px solid transparent;
+  font-weight: 500;
+  color: #6c757d;
+}
+
+.chapter-item:hover {
+  background-color: #e9ecef;
+  color: #495057;
+}
+
+.chapter-item.active {
+  background-color: #e9ecef;
+  border-left-color: black;
+  color: #343a40;
+  font-weight: 600;
+}

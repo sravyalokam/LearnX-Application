@@ -1,0 +1,139 @@
+<div class="container py-4">
+  <div class="text-center mb-5">
+    <h2 class="fw-bold fs-1 mb-4"
+      style="background: linear-gradient(90deg, #4B4FFF, #FF4DB7); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+      {{ title }}
+    </h2>
+  </div>
+
+  
+  <div class="d-flex flex-lg-row justify-content-end bg-light w-100" *ngIf="isAdmin || isAssignmentManager">
+    <button class="btn btn-primary rounded-2 p-1 px-3 fw-semibold" (click)="showAddModal = true">Add</button>
+  </div>
+
+  <div class="d-flex flex-wrap justify-content-between align-items-center bg-light p-3 rounded-3 shadow-sm mb-4" *ngIf="filter">
+    <div class="d-flex align-items-center gap-2 w-50 " >
+      <label for="courseSelect" class="fw-semibold" style="width: 200px; ">Filter by Course:</label>
+      <select id="courseSelect" class="form-select shadow-sm" style="min-width: 200px;" [(ngModel)]="selectedCourse"
+        (change)="filterByCourse(selectedCourse)">
+        <option value="all">All Courses</option>
+        <option *ngFor="let course of courses" [value]="course.title">{{ course.title }}</option>
+      </select>
+    </div>
+
+    <div class="d-flex flex-wrap gap-2 mt-3 mt-md-0">
+      <button class="btn text-white fw-semibold px-3 py-2 rounded-2 beginner"
+        [class.active]="selectedLevel==='beginner'" (click)="filterByLevel('beginner')">Beginner</button>
+      <button class="btn text-white fw-semibold px-3 py-2 rounded-2 intermediate"
+        [class.active]="selectedLevel==='intermediate'" (click)="filterByLevel('intermediate')">Intermediate</button>
+      <button class="btn text-white fw-semibold px-3 py-2 rounded-2 advanced"
+        [class.active]="selectedLevel==='advanced'" (click)="filterByLevel('advanced')">Advanced</button>
+      <button class="btn text-white fw-semibold px-3 py-2 rounded-2 all"
+        [class.active]="selectedLevel==='all'" (click)="filterByLevel('all')">All Levels</button>
+    </div>
+  </div>
+
+
+  <div class="row g-4">
+    <div *ngFor="let assignment of filteredAssignments" class="col-12 col-md-6 col-lg-4">
+      <div class="card h-100 shadow-sm border rounded-3 assignment-card">
+        <div class="card-header bg-light d-flex justify-content-between align-items-center border-bottom">
+          <div class="badge px-3 py-2  rounded-pill text-uppercase fw-bold" [ngClass]="{
+                 'bg-primary': assignment.level.toLowerCase() === 'beginner',
+                 'bg-info': assignment.level.toLowerCase() === 'intermediate',
+                 'bg-dark': assignment.level.toLowerCase() === 'advanced'
+               }">
+            {{ assignment.level | titlecase }}
+          </div>
+        </div>
+
+        <div class="card-body">
+          <h5 class="fw-bold text-dark">{{ assignment.title }}</h5>
+          <p class="text-muted small">{{ assignment.description }}</p>
+          <div class="d-flex flex-wrap gap-3 mt-3 text-muted small">
+            <!-- <span class="d-flex align-items-center gap-1">
+              <i class="bi bi-stopwatch text-primary"></i>
+              {{ assignment.duration }}
+            </span>
+            <span class="d-flex align-items-center gap-1">
+              <i class="bi bi-trophy text-warning"></i>
+              {{ assignment.points }} pts
+            </span> -->
+          </div>
+        </div>
+
+        <div class="card-footer text-center bg-white border-top">
+          <a [routerLink]="['/assignments', assignment.title, assignment.level]"
+            class="btn btn-primary px-4 py-2 fw-semibold rounded-2 shadow-sm">
+            <b>{{ isCompleted(assignment) ? "Completed" : "Start Assignment" }}</b>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--  Add Assignment Modal -->
+<div class="modal fade show d-block" tabindex="-1" *ngIf="showAddModal">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content shadow-lg rounded-3">
+      <div class="modal-header">
+        <h5 class="modal-title fw-bold">Add Assignment</h5>
+        <button type="button" class="btn-close" (click)="showAddModal=false"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="assignmentForm" (ngSubmit)="onSubmit()">
+
+          <div class="mb-3">
+            <label class="form-label">Assignment Title</label>
+            <input formControlName="title" type="text" class="form-control" placeholder="Enter title" />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Level</label>
+            <select formControlName="level" class="form-select">
+              <option value="beginner">Beginner</option>
+              <option value="intermediate">Intermediate</option>
+              <option value="advanced">Advanced</option>
+            </select>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Duration</label>
+              <input formControlName="duration" type="text" class="form-control" placeholder="e.g. 30 mins" />
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Points</label>
+              <input formControlName="points" type="number" class="form-control" placeholder="Enter points" />
+            </div>
+          </div>
+
+          <div formArrayName="questions">
+            <div *ngFor="let q of questions.controls; let i=index" [formGroupName]="i" class="border p-3 mb-3 rounded">
+              <label class="fw-semibold">Question {{ i+1 }}</label>
+              <input formControlName="text" type="text" class="form-control mb-2" placeholder="Enter question" />
+
+              <div formArrayName="options">
+                <div *ngFor="let opt of getOptions(q).controls; let j = index " class="d-flex align-items-center gap-2 mb-1">
+                  <input [formControlName]="j" type="text" class="form-control" placeholder="Option {{ j+1 }}" />
+                  <input type="radio" [value]="j" formControlName="correctAnswer" />
+                  <span>Correct</span>
+                </div>
+              </div>
+
+              <button type="button" class="btn btn-sm btn-danger mt-2" (click)="removeQuestion(i)">Remove Question</button>
+            </div>
+          </div>
+
+          <button type="button" class="btn btn-outline-primary" (click)="addQuestion()">+ Add Question</button>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-success" [disabled]="!assignmentForm.valid" (click)="onSubmit()">Save Assignment</button>
+        <button type="button" class="btn btn-secondary" (click)="showAddModal=false">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
